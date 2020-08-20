@@ -10,6 +10,7 @@ import Signup from "./Components/Signup";
 function App() {
   return (
     <div className="App">
+      <Nav />
       <h1>SubReddit Predictor</h1>
       <h3>We'll Tell You Where Your Post belongs</h3>
     </div>
