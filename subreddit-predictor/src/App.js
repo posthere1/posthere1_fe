@@ -13,6 +13,11 @@ function App() {
       <Nav />
       <h1>SubReddit Predictor</h1>
       <h3>We'll Tell You Where Your Post belongs</h3>
+      <Switch>
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/" component={Dashboard} />
+      </Switch>
     </div>
   );
 }
