@@ -86,10 +86,10 @@ const Login = () => {
             placeholder="Enter your password"
             onChange={loginInfo}
           />
-          <button disabled={disableButton} type="submit">
-            Sign In
-          </button>
         </label>
+        <button disabled={disableButton} type="submit">
+          Sign In
+        </button>
         {errors.username.length > 0 ? (
           <p className="validateInfo">{errors.username}</p>
         ) : null}
