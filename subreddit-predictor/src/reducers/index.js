@@ -1,9 +1,15 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED } from "../actions";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  FETCH_SUB_SUCCESS,
+} from "../actions";
 
 const initialState = {
-  subPredictions: [],
+  subPredictions: {},
   loggedIn: false,
   error: "",
+  token: "",
   isFetching: false,
   prevPost: [],
 };
@@ -21,6 +27,18 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         loggedIn: true,
+        isFetching: false,
+      };
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        error: action.payload,
+        isFetching: false,
+      };
+    case FETCH_SUB_SUCCESS:
+      return {
+        ...state,
+        subPredictions: action.payload,
         isFetching: false,
       };
     default:

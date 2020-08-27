@@ -5,6 +5,7 @@ const Dashboard = () => {
   return (
     <div>
       <form>
+        <p>Enter Post to Predict wh</p>
         <input type="text" />
         <button>Predict</button>
       </form>

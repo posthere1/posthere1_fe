@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
+import { connect } from "react-redux";
+import { login } from "../actions/";
 
-const Login = () => {
+const Login = (props) => {
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
@@ -87,7 +89,13 @@ const Login = () => {
             onChange={loginInfo}
           />
         </label>
-        <button disabled={disableButton} onClick={() => {}} type="submit">
+        <button
+          disabled={disableButton}
+          onClick={() => {
+            props.login(loginState);
+          }}
+          type="submit"
+        >
           Sign In
         </button>
         {errors.username.length > 0 ? (
@@ -96,9 +104,16 @@ const Login = () => {
         {errors.password.length > 0 ? (
           <p className="validateInfo">{errors.password}</p>
         ) : null}
+        {props.error && <p>There was an error.</p>}
       </form>
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.isFetching,
+    error: state.error,
+  };
+};
 
-export default Login;
+export default connect(mapStateToProps, { login })(Login);
