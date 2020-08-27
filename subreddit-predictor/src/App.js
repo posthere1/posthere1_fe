@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { PrivateRoute } from "./utils/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
 import Landing from "./Components/Landing";
 import Login from "./Components/Login";
@@ -11,12 +12,11 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <h1>SubReddit Predictor</h1>
-      <h3>We'll Tell You Where Your Post belongs</h3>
       <Switch>
+        <Route path="/" component={Landing} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        <Route path="/" component={Dashboard} />
+        <PrivateRoute path="/home" component={Dashboard} />
       </Switch>
     </div>
   );

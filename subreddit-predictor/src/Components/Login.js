@@ -87,7 +87,7 @@ const Login = () => {
             onChange={loginInfo}
           />
         </label>
-        <button disabled={disableButton} type="submit">
+        <button disabled={disableButton} onClick={() => {}} type="submit">
           Sign In
         </button>
         {errors.username.length > 0 ? (

@@ -22,10 +22,10 @@ const Signup = () => {
       .string()
       .min(4, "Username must have at least 4 characters")
       .required("Username is required"),
-    email: yup
+    /*email: yup
       .string()
       .email("An email is required")
-      .required("Email is required"),
+      .required("Email is required"),*/
     password: yup
       .string()
       .min(8, "Password must have at least 8 characters")
@@ -74,6 +74,17 @@ const Signup = () => {
     <div>
       <h1>Sign Up Page</h1>
       <form>
+        {/*<label htmlFor="email">
+          Email:
+          <input
+            id="email"
+            name="email"
+            type="text"
+            value={signUpState.email}
+            placeholder="Enter Email here"
+            onChange={inputChange}
+          />
+  </label>*/}
         <label htmlFor="username">
           Username:
           <input
@@ -85,18 +96,6 @@ const Signup = () => {
             onChange={inputChange}
           />
         </label>
-        <label htmlFor="email">
-          Email:
-          <input
-            id="email"
-            name="email"
-            type="text"
-            value={signUpState.email}
-            placeholder="Enter Email here"
-            onChange={inputChange}
-          />
-        </label>
-
         <label htmlFor="password">
           Password:
           <input

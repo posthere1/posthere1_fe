@@ -1,3 +1,7 @@
+/api/posts/:userId
+
+title, text, results: {1, 3, 5}
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
