@@ -1,16 +1,30 @@
 import React from "react";
-import { axiosWithAuth } from "../utils/axiosWthAuth";
+import { connect } from "react-redux";
+import { fetchSubs } from "../actions/";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div>
       <form>
         <p>Enter Post to Predict wh</p>
         <input type="text" />
-        <button>Predict</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            props.fetchSubs(1);
+          }}
+        >
+          Predict
+        </button>
       </form>
     </div>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.loggedIn,
+  };
+};
+
+export default connect(mapStateToProps, { fetchSubs })(Dashboard);

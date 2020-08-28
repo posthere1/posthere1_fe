@@ -6,11 +6,11 @@ import Landing from "./Components/Landing";
 import Login from "./Components/Login";
 import Nav from "./Components/Nav";
 import Signup from "./Components/Signup";
-import "./App.scss";
+import "./App.css";
 
 function App() {
   return (
-    <div class="container" className="container">
+    <div className="container">
       <Nav />
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />

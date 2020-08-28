@@ -1,0 +1,300 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* End of CSS reset */
+
+body {
+  background: #dae0e6;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 100%;
+}
+.container {
+  max-width: 100%;
+}
+.container header {
+  width: 100%;
+  background: #ffffff;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.container header nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.container header nav .post-here {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.container header nav .post-here p {
+  font-size: calc(1em + 1vw);
+  padding: 0 0 0 2%;
+}
+.container header nav .logo {
+  width: 10%;
+  padding: 2% 0 2% 6%;
+}
+.container header nav .nav-links {
+  /* display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 .75% 0 40%; */
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 1% 0 0;
+}
+.container header nav .nav-links a {
+  padding: 0 3% 0 3%;
+  text-decoration: none;
+  font-size: calc(0.6em + 0.6vw);
+  color: black;
+}
+.container header nav .nav-links a:hover {
+  color: #0079d3;
+}
+.container header #signup {
+  color: #0079d3;
+}
+.container header nav .profile {
+  max-width: 6%;
+}
+h1 {
+  text-align: center;
+  font-size: calc(1.25em + 1.25vw);
+  margin: 5% 0 1.25% 0;
+}
+h2 {
+  text-align: center;
+  font-size: calc(0.8em + 0.8vw);
+  margin: 1.25% 0 2.5%;
+}
+.main-content {
+  padding: 0 15% 0 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-content .top {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5 0 2.5% 0;
+}
+.main-content .top .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 3% 1%;
+}
+.main-content .top img {
+  width: 60%;
+  margin: 0 1% 2% 0;
+}
+.main-content .top .description p {
+  font-size: calc(1em + 1vw);
+  line-height: 2.25rem;
+  padding: 0 0 5% 0;
+  text-align: center;
+}
+@media screen and (min-width: 1001px) {
+  .main-content .top .description p {
+    line-height: 3.5rem;
+  }
+}
+.main-content .top .description button {
+  width: 250px;
+  height: 35px;
+  background: #0079d3;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.main-content .mid {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.5% 0 2.5% 0;
+}
+.main-content .mid img {
+  width: 50%;
+}
+.main-content .mid p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(1em + 1vw);
+  line-height: 2.25rem;
+  text-align: center;
+  padding: 0 2% 0 0;
+}
+@media screen and (min-width: 1001px) {
+  .main-content .mid p {
+    line-height: 3.5rem;
+  }
+}
+.main-content .bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 2.5% 0;
+}
+.main-content .bottom button {
+  width: 150px;
+  height: 35px;
+  background: #0079d3;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.main-content .bottom h3 {
+  font-size: calc(0.75em + 0.75vw);
+  line-height: 3.5rem;
+}
+.container footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1% 0 0 0;
+}
+footer p {
+  font-size: calc(0.4em + 0.4vw);
+}

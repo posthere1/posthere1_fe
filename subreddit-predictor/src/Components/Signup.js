@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
+import { connect } from "react-redux";
+import { signUp } from "../actions";
 
-const Signup = () => {
+const Signup = (props) => {
   const [signUpState, setSignUpState] = useState({
     username: "",
-    email: "",
     password: "",
-    terms: false,
   });
   const [errors, setErrors] = useState({
     username: "",
-    email: "",
     password: "",
-    terms: "",
   });
 
   const [disableButton, setDisableButton] = useState(true);
@@ -30,7 +28,6 @@ const Signup = () => {
       .string()
       .min(8, "Password must have at least 8 characters")
       .required("Password is required"),
-    terms: yup.boolean().oneOf([true], "Please agree to Terms and Conditions"),
   });
 
   const validateChange = (e) => {
@@ -107,17 +104,14 @@ const Signup = () => {
             onChange={inputChange}
           />
         </label>
-        <label htmlFor="terms">
-          Terms And Conditions
-          <input
-            id="terms"
-            name="terms"
-            type="checkbox"
-            checked={signUpState.terms}
-            onChange={inputChange}
-          />
-        </label>
-        <button disabled={disableButton} type="submit">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            props.signUp(signUpState);
+          }}
+          disabled={disableButton}
+          type="submit"
+        >
           Create Account
         </button>
         {errors.username.length > 0 ? (
@@ -137,4 +131,11 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapStateToProps = (state) => {
+  return {
+    isFetching: state.isFetching,
+    error: state.error,
+  };
+};
+
+export default connect(mapStateToProps, { signUp })(Signup);

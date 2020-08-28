@@ -48,7 +48,6 @@ const Login = (props) => {
 
   const loginInfo = (e) => {
     e.persist();
-    console.log("Login Information", e.target.value);
     const loginData = {
       ...loginState,
       [e.target.name]: e.target.value,
@@ -91,7 +90,8 @@ const Login = (props) => {
         </label>
         <button
           disabled={disableButton}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             props.login(loginState);
           }}
           type="submit"

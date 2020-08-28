@@ -2,14 +2,18 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
+  SIGNUP_START,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILED,
   FETCH_SUB_SUCCESS,
+  LOGOUT,
 } from "../actions";
 
 const initialState = {
+  userId: 0,
   subPredictions: {},
   loggedIn: false,
   error: "",
-  token: "",
   isFetching: false,
   prevPost: [],
 };
@@ -35,11 +39,33 @@ export function reducer(state = initialState, action) {
         error: action.payload,
         isFetching: false,
       };
+    case SIGNUP_START:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        loggedIn: true,
+      };
+    case SIGNUP_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+      };
     case FETCH_SUB_SUCCESS:
       return {
         ...state,
         subPredictions: action.payload,
         isFetching: false,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        loggedIn: false,
       };
     default:
       return state;

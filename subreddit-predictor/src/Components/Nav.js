@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { logout } from "../actions/";
 import logo from "../assets/logo.png";
 import profileIcon from "../assets/profileicon.png";
 
@@ -12,7 +13,7 @@ const Nav = (props) => {
           <img src={logo} alt="Black Reddit logo" className="logo" />
           <p>Post Here</p>
         </div>
-        <div class="nav-links">
+        <div className="nav-links">
           <NavLink to="/">Home</NavLink>
           {props.loggedIn && <NavLink to="/dashboard">Dashboard</NavLink>}
           <NavLink to="/about">About</NavLink>
@@ -20,6 +21,16 @@ const Nav = (props) => {
             Sign Up
           </NavLink>
           <NavLink to="/login">Login</NavLink>
+          {props.loggedIn && (
+            <NavLink
+              to="/"
+              onClick={() => {
+                props.logout();
+              }}
+            >
+              Logout
+            </NavLink>
+          )}
           <img src={profileIcon} alt="Profile icon" className="profile" />
         </div>
       </nav>
@@ -33,4 +44,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(Nav);
+export default connect(mapStateToProps, { logout })(Nav);
