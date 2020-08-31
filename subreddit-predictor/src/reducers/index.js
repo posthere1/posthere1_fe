@@ -7,11 +7,13 @@ import {
   SIGNUP_FAILED,
   FETCH_SUB_SUCCESS,
   LOGOUT,
+  UPDATE_ID,
+  SET_PREV_POST,
 } from "../actions";
 
 const initialState = {
   userId: 0,
-  subPredictions: {},
+  subPredictions: [],
   loggedIn: false,
   error: "",
   isFetching: false,
@@ -59,8 +61,19 @@ export function reducer(state = initialState, action) {
     case FETCH_SUB_SUCCESS:
       return {
         ...state,
-        subPredictions: action.payload,
+        subPredictions: action.payload.sugg,
+        prevPost: [...state.prevPost, action.payload.data],
         isFetching: false,
+      };
+    case UPDATE_ID:
+      return {
+        ...state,
+        userId: action.payload,
+      };
+    case SET_PREV_POST:
+      return {
+        ...state,
+        prevPost: action.payload,
       };
     case LOGOUT:
       return {
