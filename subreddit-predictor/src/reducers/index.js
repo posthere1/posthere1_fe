@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   userId: 0,
-  subPredictions: {},
+  subPredictions: [],
   loggedIn: false,
   error: "",
   isFetching: false,

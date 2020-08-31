@@ -41,7 +41,6 @@ const Signup = (props) => {
         });
       })
       .catch((error) => {
-        console.log(error);
         setErrors({
           ...errors,
           [e.target.name]: error.errors[0],
@@ -51,7 +50,6 @@ const Signup = (props) => {
 
   const inputChange = (e) => {
     e.persist();
-    console.log("changed", e.target.value);
     const newAcctData = {
       ...signUpState,
       [e.target.name]:

@@ -38,7 +38,6 @@ const Login = (props) => {
         });
       })
       .catch((error) => {
-        console.log(error);
         setErrors({
           ...errors,
           [e.target.name]: error.errors[0],

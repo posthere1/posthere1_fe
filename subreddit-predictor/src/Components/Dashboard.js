@@ -6,7 +6,7 @@ const Dashboard = (props) => {
   return (
     <div>
       <form>
-        <p>Enter Post to Predict wh</p>
+        <p>Enter Post to Predict which subreddit is best to post to:</p>
         <input type="text" />
         <button
           onClick={(e) => {
@@ -17,13 +17,22 @@ const Dashboard = (props) => {
           Predict
         </button>
       </form>
+      <h3>Predictions:</h3>
+      {props.subPredictions.forEach((i) => {
+        return <p>{i}</p>;
+      })}
+      <h3>Previous Posts:</h3>
+      {props.prevPost.forEach((i) => {
+        return <p>{i}</p>;
+      })}
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
+    subPredictions: state.subPredictions,
+    prevPost: state.prevPost,
   };
 };
 
