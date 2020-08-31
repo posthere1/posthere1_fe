@@ -6,7 +6,7 @@ const Dashboard = (props) => {
   return (
     <div>
       <form>
-        <p>Enter Post to Predict wh</p>
+        <p>Type In Post for Prediction</p>
         <input type="text" />
         <button
           onClick={(e) => {

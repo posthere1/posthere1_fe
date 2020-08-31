@@ -2,6 +2,34 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { signUp } from "../actions";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import styled from "styled-components";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
+
+const Container = styled.div`
+  width: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10% 0 0 30%;
+`;
+
+const ErrorMessage = styled.p`
+  font-size: 0.8rem;
+  color: red;
+  text-align: center;
+  margin-left: 27%;
+`;
 
 const Signup = (props) => {
   const [signUpState, setSignUpState] = useState({
@@ -12,6 +40,7 @@ const Signup = (props) => {
     username: "",
     password: "",
   });
+  const classes = useStyles();
 
   const [disableButton, setDisableButton] = useState(true);
 
@@ -68,9 +97,9 @@ const Signup = (props) => {
   }, [signUpState]);
 
   return (
-    <div>
-      <h1>Sign Up Page</h1>
-      <form>
+    <Container>
+      <h2>Sign Up</h2>
+      <form className={classes.root}>
         {/*<label htmlFor="email">
           Email:
           <input
@@ -84,8 +113,9 @@ const Signup = (props) => {
   </label>*/}
         <label htmlFor="username">
           Username:
-          <input
+          <TextField
             id="username"
+            variant="standard"
             name="username"
             type="text"
             value={signUpState.username}
@@ -95,8 +125,9 @@ const Signup = (props) => {
         </label>
         <label htmlFor="password">
           Password:
-          <input
+          <TextField
             id="password"
+            variant="standard"
             type="password"
             name="password"
             value={signUpState.password}
@@ -104,7 +135,9 @@ const Signup = (props) => {
             onChange={inputChange}
           />
         </label>
-        <button
+        <Button
+          variant="contained"
+          color="primary"
           onClick={(e) => {
             e.preventDefault();
             props.signUp(signUpState);
@@ -113,21 +146,21 @@ const Signup = (props) => {
           type="submit"
         >
           Create Account
-        </button>
+        </Button>
         {errors.username.length > 0 ? (
-          <p className="validateInfo">{errors.username}</p>
+          <ErrorMessage>{errors.username}</ErrorMessage>
         ) : null}
         {errors.password.length > 0 ? (
-          <p className="validateInfo">{errors.email}</p>
+          <ErrorMessage>{errors.email}</ErrorMessage>
         ) : null}
         {errors.username.length > 0 ? (
-          <p className="validateInfo">{errors.password}</p>
+          <ErrorMessage>{errors.password}</ErrorMessage>
         ) : null}
         {errors.password.length > 0 ? (
-          <p className="validateInfo">{errors.terms}</p>
+          <ErrorMessage>{errors.terms}</ErrorMessage>
         ) : null}
       </form>
-    </div>
+    </Container>
   );
 };
 
