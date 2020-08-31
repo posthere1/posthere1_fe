@@ -61,7 +61,8 @@ export function reducer(state = initialState, action) {
     case FETCH_SUB_SUCCESS:
       return {
         ...state,
-        subPredictions: action.payload,
+        subPredictions: action.payload.sugg,
+        prevPost: [...state.prevPost, action.payload.data],
         isFetching: false,
       };
     case UPDATE_ID:

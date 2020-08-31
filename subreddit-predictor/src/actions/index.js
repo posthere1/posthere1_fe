@@ -28,6 +28,7 @@ export const signUp = (userInfo) => (dispatch) => {
       console.log(res.data);
       dispatch({ type: UPDATE_ID, payload: res.data.id });
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("id", res.data.data.id);
     })
     .catch((err) => dispatch({ type: SIGNUP_FAILED, payload: err }));
 };
@@ -40,6 +41,7 @@ export const login = (credentials) => (dispatch) => {
     .then((res) => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("id", res.data.id);
     })
     .catch((err) => {
       dispatch({ type: LOGIN_FAILED, payload: err });
@@ -57,7 +59,12 @@ export const logout = () => (dispatch) => {
 export const fetchSubs = (input) => (dispatch) => {
   dispatch({ type: FETCH_SUB });
   axiosWithAuth()
-    .post(`https://subreditpredictor.herokuapp.com/suggestions`, input)
+    .post(
+      `https://redditposthere.herokuapp.com/api/posts/${localStorage.getItem(
+        "id"
+      )}`,
+      input
+    )
     .then((res) => {
       dispatch({ type: FETCH_SUB_SUCCESS, payload: res.data });
       console.log(res);
@@ -71,10 +78,10 @@ export const fetchSubs = (input) => (dispatch) => {
 //FETCH PREVIOS POST
 export const fetchPrev = (id) => (dispatch) => {
   axiosWithAuth()
-    .get(`https://subreditpredictor.herokuapp.com/api/posts/${id}`)
+    .get(`https://redditposthere.herokuapp.com/api/posts/${id}`)
     .then((res) => {
-      console.log(res);
       dispatch({ action: SET_PREV_POST, payload: res.data });
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);
