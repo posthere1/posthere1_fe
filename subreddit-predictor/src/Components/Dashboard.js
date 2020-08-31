@@ -1,8 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchSubs, fetchPrev } from "../actions/";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import styled from "styled-components";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
+
+const Flex = styled.div`
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 30%;
+  text-align: center;
+`;
 
 const Dashboard = (props) => {
+  const classes = useStyles();
+  const bull = <span className={classes.bullet}>•</span>;
+
   const [formState, setFormState] = useState({
     title: "",
     text: "",
@@ -24,38 +53,59 @@ const Dashboard = (props) => {
     <div>
       <br />
       <br />
+
       <form>
-        <p>Enter Post to Predict which subreddit is best to post to:</p>
-        <br />
-        Title
-        <input
-          name="title"
-          type="text"
-          value={formState.title}
-          onChange={handleChange}
-        />
-        Message
-        <input
-          name="text"
-          type="text"
-          value={formState.text}
-          onChange={handleChange}
-        />
-        Results
-        <input
-          name="results"
-          type="number"
-          value={formState.results}
-          onChange={handleChange}
-        />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            props.fetchSubs(formState);
-          }}
-        >
-          Predict
-        </button>
+        <Flex>
+          <Card className={classes.root}>
+            <CardContent>
+              <Typography color="textSecondary" gutterBottom>
+                Enter Post to Predict which subreddit it best belongs
+              </Typography>
+              <br />
+
+              {/* Title */}
+              <TextField
+                name="title"
+                type="text"
+                variant="outlined"
+                label="Title Of Your Post"
+                value={formState.title}
+                onChange={handleChange}
+              />
+              {/* Message */}
+              <TextField
+                name="text"
+                type="text"
+                variant="outlined"
+                rowsMax={5}
+                multiline
+                label="Write Your Post"
+                value={formState.text}
+                onChange={handleChange}
+              />
+              {/* Results */}
+              <TextField
+                name="results"
+                type="number"
+                variant="outlined"
+                label="Results"
+                value={formState.results}
+                onChange={handleChange}
+              />
+
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.fetchSubs(formState);
+                }}
+              >
+                Predict
+              </Button>
+            </CardContent>
+          </Card>
+        </Flex>
       </form>
       <br />
       <br />
