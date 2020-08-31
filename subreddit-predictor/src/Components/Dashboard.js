@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Flex = styled.div`
-  width: 40%;
+  width: 30%;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: 30%;
+  margin-left: 40%;
   text-align: center;
 `;
 
