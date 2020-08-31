@@ -158,7 +158,7 @@ const Signup = (props) => {
         {errors.password.length > 0 ? (
           <ErrorMessage>{errors.email}</ErrorMessage>
         ) : null}
-        {errors.username.length > 0 ? (
+        {errors.password.length > 0 ? (
           <ErrorMessage>{errors.password}</ErrorMessage>
         ) : null}
         {errors.password.length > 0 ? (
