@@ -17,10 +17,18 @@ const Nav = (props) => {
           <NavLink to="/">Home</NavLink>
           {props.loggedIn && <NavLink to="/dashboard">Dashboard</NavLink>}
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/signup" id="signup">
-            Sign Up
-          </NavLink>
-          <NavLink to="/login">Login</NavLink>
+          {props.loggedIn === false ? (
+            <NavLink to="/signup" id="signup">
+              Sign Up
+            </NavLink>
+          ) : (
+            false
+          )}
+          {props.loggedIn === false ? (
+            <NavLink to="/login">Login</NavLink>
+          ) : (
+            false
+          )}
           {props.loggedIn && (
             <NavLink
               to="/"

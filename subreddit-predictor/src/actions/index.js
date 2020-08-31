@@ -87,3 +87,13 @@ export const fetchPrev = (id) => (dispatch) => {
       console.log(err);
     });
 };
+
+// DELETE POST
+export const deletePost = (id) => (dispatch) => {
+  axiosWithAuth()
+    .delete(`https://redditposthere.herokuapp.com/api/posts/${id}`)
+    .then((res) => {
+      console.log("DELETING THINGS!");
+      console.log(res);
+    });
+};

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchSubs, fetchPrev } from "../actions/";
+import { fetchSubs, fetchPrev, deletePost } from "../actions/";
 
 const Dashboard = (props) => {
   const [formState, setFormState] = useState({
@@ -16,8 +16,12 @@ const Dashboard = (props) => {
     });
   };
 
-  useEffect(() => {
+  const getPrev = () => {
     props.fetchPrev(props.userId);
+  };
+
+  useEffect(() => {
+    getPrev();
   }, [props.prevPost]);
 
   return (
@@ -41,13 +45,6 @@ const Dashboard = (props) => {
           value={formState.text}
           onChange={handleChange}
         />
-        Results
-        <input
-          name="results"
-          type="number"
-          value={formState.results}
-          onChange={handleChange}
-        />
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -59,7 +56,7 @@ const Dashboard = (props) => {
       </form>
       <br />
       <br />
-      <h3>Predictions:</h3>
+      <h3>Prediction:</h3>
       {props.subPredictions.map((i) => {
         return (
           <div className="predictions">
@@ -71,14 +68,29 @@ const Dashboard = (props) => {
       <br />
       <br />
       <h3>Previous Posts:</h3>
+      <br />
       {props.prevPost.map((i) => {
         return (
-          <div>
-            <p>
-              <b>{i.title}</b>
-            </p>
-            <p>{i.text}</p>
-          </div>
+          <>
+            <div>
+              <p>
+                Title: <b>{i.title}</b>
+              </p>
+              <p>Message: {i.text}</p>
+              <br />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.deletePost(localStorage.getItem("id"));
+                  getPrev();
+                }}
+              >
+                X
+              </button>
+              <button>Update</button>
+            </div>
+            <br />
+          </>
         );
       })}
     </div>
@@ -93,4 +105,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSubs, fetchPrev })(Dashboard);
+export default connect(mapStateToProps, { fetchSubs, fetchPrev, deletePost })(
+  Dashboard
+);
