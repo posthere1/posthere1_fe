@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { connect } from "react-redux";
-import { login } from "../actions/";
+import { login, fetchPrev } from "../actions/";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -73,7 +73,6 @@ const Login = (props) => {
         });
       })
       .catch((error) => {
-        console.log(error);
         setErrors({
           ...errors,
           [e.target.name]: error.errors[0],
@@ -129,9 +128,10 @@ const Login = (props) => {
           variant="contained"
           color="primary"
           disabled={disableButton}
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
-            props.login(loginState);
+            await props.login(loginState);
+            props.fetchPrev(props.userId);
           }}
           type="submit"
         >
@@ -152,7 +152,8 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
     error: state.error,
+    userId: state.userId,
   };
 };
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, fetchPrev })(Login);
