@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { logout } from "../actions/";
 import logo from "../assets/logo.png";
 import profileIcon from "../assets/profileicon.png";
-import styled from "styled-components";
 
 const Nav = (props) => {
   return (
