@@ -50,7 +50,7 @@ const FlexThree = styled.div`
   justify-content: space-evenly;
   flex-direction: row;
   margin-left: 10%;
-  // border: 1px solid black;
+  margin-top: 2rem;
 `;
 
 const Dashboard = (props) => {
