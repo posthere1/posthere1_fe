@@ -6,17 +6,10 @@ import logo from "../assets/logo.png";
 import profileIcon from "../assets/profileicon.png";
 import styled from "styled-components";
 
-const LinkNav = styled.nav`
-padding: 0 3% 0 3%;
-  text-decoration: none;
-  font-size: calc(0.6em + 0.6vw);
-  color: black;
-}`;
-
 const Nav = (props) => {
   return (
     <header className="header">
-      <LinkNav>
+      <nav>
         <div className="post-here">
           <img src={logo} alt="Black Reddit logo" className="logo" />
           <p>Post Here</p>
@@ -41,7 +34,7 @@ const Nav = (props) => {
           )}
           <img src={profileIcon} alt="Profile icon" className="profile" />
         </div>
-      </LinkNav>
+      </nav>
     </header>
   );
 };
