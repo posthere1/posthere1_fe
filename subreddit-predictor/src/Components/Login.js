@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { login, fetchPrev } from "../actions/";
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
   const [loginState, setLoginState] = useState({
@@ -13,6 +14,8 @@ const Login = (props) => {
     username: "",
     password: "",
   });
+
+  const { history } = useHistory();
 
   const [disableButton, setDisableButton] = useState(true);
 
@@ -93,6 +96,7 @@ const Login = (props) => {
             e.preventDefault();
             await props.login(loginState);
             props.fetchPrev(props.userId);
+            props.history.push("/dashboard");
           }}
           type="submit"
         >

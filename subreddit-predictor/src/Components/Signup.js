@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { signUp } from "../actions";
+import { useHistory } from "react-router-dom";
 
 const Signup = (props) => {
   const [signUpState, setSignUpState] = useState({
@@ -12,6 +13,8 @@ const Signup = (props) => {
     username: "",
     password: "",
   });
+
+  const { history } = useHistory();
 
   const [disableButton, setDisableButton] = useState(true);
 
@@ -103,9 +106,10 @@ const Signup = (props) => {
           />
         </label>
         <button
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
-            props.signUp(signUpState);
+            await props.signUp(signUpState);
+            props.history.push("/dashboard");
           }}
           disabled={disableButton}
           type="submit"
