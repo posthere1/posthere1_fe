@@ -181,9 +181,9 @@ body {
 .container header nav .nav-links a:hover {
   color: #0079d3;
 }
-.container header #signup {
+/* .container header #signup {
   color: #0079d3;
-}
+} */
 .container header nav .profile {
   max-width: 6%;
 }

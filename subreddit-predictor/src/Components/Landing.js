@@ -8,6 +8,10 @@ const Landing = () => {
   const goSignup = () => {
     history.push("/signup");
   };
+
+  const goAbout = () => {
+    history.push("/about");
+  };
   return (
     <>
       <section className="main-content">
@@ -34,7 +38,7 @@ const Landing = () => {
         </div>
         <div className="bottom">
           <h3>Post Here has got you covered.</h3>
-          <button>About</button>
+          <button onClick={goAbout}>About</button>
         </div>
       </section>
 
