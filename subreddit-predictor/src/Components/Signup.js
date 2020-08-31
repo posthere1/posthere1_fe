@@ -31,6 +31,11 @@ const ErrorMessage = styled.p`
   margin-left: 27%;
 `;
 
+const Info = styled.h2`
+  color: #0079d3;
+  font-weight: bold;
+`;
+
 const Signup = (props) => {
   const [signUpState, setSignUpState] = useState({
     username: "",
@@ -98,7 +103,7 @@ const Signup = (props) => {
 
   return (
     <Container>
-      <h2>Sign Up</h2>
+      <Info>Create Account</Info>
       <form className={classes.root}>
         {/*<label htmlFor="email">
           Email:

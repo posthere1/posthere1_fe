@@ -31,6 +31,11 @@ const ErrorMessage = styled.p`
   margin-left: 27%;
 `;
 
+const Info = styled.h2`
+  color: #0079d3;
+  font-weight: bold;
+`;
+
 const Login = (props) => {
   const classes = useStyles();
 
@@ -94,7 +99,7 @@ const Login = (props) => {
 
   return (
     <Container>
-      <h2>Login </h2>
+      <Info>Sign In </Info>
       <form className={classes.root}>
         <label htmlFor="username">
           Username:
