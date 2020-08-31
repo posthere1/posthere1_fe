@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Flex = styled.div`
-  width: 30%;
+  width: 25%;
   display: flex;
   justify-content: center;
   flex-direction: column;
