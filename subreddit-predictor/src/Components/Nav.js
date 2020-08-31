@@ -31,13 +31,7 @@ const Nav = (props) => {
               Logout
             </NavLink>
           )}
-          <img
-            src={profileIcon}
-            width="30%"
-            heigh="30%"
-            alt="Profile icon"
-            className="profile"
-          />
+          <img src={profileIcon} alt="Profile icon" className="profile" />
         </div>
       </nav>
     </header>
