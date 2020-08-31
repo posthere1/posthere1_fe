@@ -23,7 +23,7 @@ const Flex = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: 35%;
+  margin-left: 40%;
   text-align: center;
 `;
 
