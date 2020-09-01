@@ -64,9 +64,13 @@ const Dashboard = (props) => {
   });
 
   const handleChange = (event) => {
+    console.log(typeof event.target.value);
     setFormState({
       ...formState,
-      [event.target.name]: event.target.value,
+      [event.target.name]:
+        event.target.type === "number"
+          ? parseInt(event.target.value)
+          : event.target.value,
     });
   };
 
@@ -118,10 +122,9 @@ const Dashboard = (props) => {
               />
               {/* Results */}
               <TextField
+                variant="outlined"
                 name="results"
                 type="number"
-                variant="outlined"
-                label="Results"
                 value={formState.results}
                 onChange={handleChange}
               />
@@ -150,10 +153,14 @@ const Dashboard = (props) => {
             </Typography>
             {props.subPredictions.map((i) => {
               return (
-                <div className="predictions">
-                  <p>Subreddit: {i.suggested_subreddit}</p>
-                  <p>Predicted Upvotes: {i.pred_upvotes}</p>
-                </div>
+                <>
+                  <div className="predictions">
+                    <p>Subreddit: {i.suggested_subreddit}</p>
+                    <p>Predicted Upvotes: {i.pred_upvotes}</p>
+                  </div>
+                  <br />
+                  <br />
+                </>
               );
             })}
           </Card>

@@ -134,7 +134,7 @@ const Login = (props) => {
           onClick={async (e) => {
             e.preventDefault();
             await props.login(loginState);
-            props.fetchPrev(props.userId);
+            //props.fetchPrev(props.userId);
             props.history.push("/dashboard");
           }}
           type="submit"

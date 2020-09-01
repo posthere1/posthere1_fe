@@ -58,6 +58,7 @@ export const logout = () => (dispatch) => {
 // FETCH SUBS
 export const fetchSubs = (input) => (dispatch) => {
   dispatch({ type: FETCH_SUB });
+  console.log(input);
   axiosWithAuth()
     .post(
       `https://redditposthere.herokuapp.com/api/posts/${localStorage.getItem(
