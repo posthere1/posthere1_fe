@@ -8,15 +8,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
 import { reducer } from "./reducers";
+import { createBrowserHistory } from "history";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 
 const store = createStore(reducer, applyMiddleware(thunk));
+const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <App />
       </Router>
     </Provider>

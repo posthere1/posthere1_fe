@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { signUp } from "../actions";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -46,6 +47,8 @@ const Signup = (props) => {
     password: "",
   });
   const classes = useStyles();
+
+  const { history } = useHistory();
 
   const [disableButton, setDisableButton] = useState(true);
 
@@ -141,9 +144,10 @@ const Signup = (props) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
-            props.signUp(signUpState);
+            await props.signUp(signUpState);
+            props.history.push("/dashboard");
           }}
           disabled={disableButton}
           type="submit"

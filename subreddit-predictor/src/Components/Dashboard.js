@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchSubs, fetchPrev } from "../actions/";
+import { fetchSubs, fetchPrev, deletePost } from "../actions/";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Card from "@material-ui/core/Card";
@@ -67,6 +67,14 @@ const Dashboard = (props) => {
     setFormState({
       ...formState,
       [event.target.name]: event.target.value,
+    });
+  };
+
+  const clearInputs = () => {
+    setFormState({
+      title: "",
+      text: "",
+      results: 1,
     });
   };
 
@@ -165,6 +173,16 @@ const Dashboard = (props) => {
                     <b>{i.title}</b>
                   </Typography>
                   <p>{i.text}</p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      clearInputs();
+                      props.deletePost(i.id);
+                    }}
+                  >
+                    X
+                  </button>
+                  <button>Update</button>
                 </Card>
               );
             })}
@@ -183,4 +201,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSubs, fetchPrev })(Dashboard);
+export default connect(mapStateToProps, { fetchSubs, fetchPrev, deletePost })(
+  Dashboard
+);
