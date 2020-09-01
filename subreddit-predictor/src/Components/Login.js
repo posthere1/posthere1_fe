@@ -3,6 +3,7 @@ import * as yup from "yup";
 import { connect } from "react-redux";
 import { login, fetchPrev } from "../actions/";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
@@ -48,6 +49,8 @@ const Login = (props) => {
     username: "",
     password: "",
   });
+
+  const { history } = useHistory();
 
   const [disableButton, setDisableButton] = useState(true);
 
@@ -132,6 +135,7 @@ const Login = (props) => {
             e.preventDefault();
             await props.login(loginState);
             props.fetchPrev(props.userId);
+            props.history.push("/dashboard");
           }}
           type="submit"
         >
