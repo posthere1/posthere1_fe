@@ -1,8 +1,17 @@
 import React from "react";
 import formsPicture from "../assets/forms.png";
 import questionPicture from "../assets/questions.png";
+import { useHistory } from "react-router-dom";
 
 const Landing = () => {
+  const history = useHistory();
+  const goSignup = () => {
+    history.push("/signup");
+  };
+
+  const goAbout = () => {
+    history.push("/about");
+  };
   return (
     <>
       <section className="main-content">
@@ -16,7 +25,7 @@ const Landing = () => {
               create your post and we'll find the subreddit that is most
               appropriate.
             </p>
-            <button>Get Started</button>
+            <button onClick={goSignup}>Get Started</button>
           </div>
         </div>
         <div className="mid">
@@ -29,7 +38,7 @@ const Landing = () => {
         </div>
         <div className="bottom">
           <h3>Post Here has got you covered.</h3>
-          <button>About</button>
+          <button onClick={goAbout}>About</button>
         </div>
       </section>
 

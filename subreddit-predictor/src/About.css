@@ -144,6 +144,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  height: 10%;
 }
 .container header nav {
   display: flex;
@@ -157,7 +158,7 @@ body {
   justify-content: flex-start;
 }
 .container header nav .post-here p {
-  font-size: calc(1em + 1vw);
+  font-size: calc(1.2em + 1.2vw);
   padding: 0 0 0 2%;
 }
 .container header nav .logo {
@@ -165,10 +166,6 @@ body {
   padding: 2% 0 2% 6%;
 }
 .container header nav .nav-links {
-  /* display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 .75% 0 40%; */
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -190,105 +187,45 @@ body {
 .container header nav .profile {
   max-width: 6%;
 }
+.main-content {
+  padding: 0 10% 0 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 h1 {
   text-align: center;
   font-size: calc(1.25em + 1.25vw);
-  margin: 5% 0 1.25% 0;
+  margin: 2.5% 0 1.5% 0;
 }
-h2 {
-  text-align: center;
-  font-size: calc(0.8em + 0.8vw);
-  margin: 1.25% 0 2.5%;
-}
-.main-content {
-  padding: 0 15% 0 15%;
+.our-team {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.main-content .top {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 2.5 0 2.5% 0;
-}
-.main-content .top .description {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 0 0 3% 1%;
+  flex-wrap: wrap;
 }
-.main-content .top img {
-  width: 60%;
-  margin: 0 1% 2% 0;
-}
-.main-content .top .description p {
-  font-size: calc(1em + 1vw);
-  line-height: 2.25rem;
-  padding: 0 0 5% 0;
+.our-team .person {
   text-align: center;
+  width: 30%;
+  margin: 1.5%;
 }
-@media screen and (min-width: 1001px) {
-  .main-content .top .description p {
-    line-height: 3.5rem;
-  }
+.our-team .person img {
+  width: 100%;
 }
-.main-content .top .description button {
-  width: 250px;
-  height: 35px;
-  background: #0079d3;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
-  cursor: pointer;
-  text-decoration: none;
+.our-team .person .name {
+  color: black;
+  margin: 2.5%;
+  font-size: calc(0.7em + 0.7vw);
 }
-.main-content .mid {
-  display: flex;
-  justify-content: space-between;
-  padding: 2.5% 0 2.5% 0;
+.our-team .person .role {
+  color: grey;
 }
-.main-content .mid img {
-  width: 50%;
+.our-team .person p {
+  color: black;
+  font-size: calc(0.6em + 0.6vw);
 }
-.main-content .mid p {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: calc(1em + 1vw);
-  line-height: 2.25rem;
-  text-align: center;
-  padding: 0 2% 0 0;
-}
-@media screen and (min-width: 1001px) {
-  .main-content .mid p {
-    line-height: 3.5rem;
-  }
-}
-.main-content .bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 0 2.5% 0;
-}
-.main-content .bottom button {
-  width: 150px;
-  height: 35px;
-  background: #0079d3;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.3);
-  transition: 0.3s;
-  cursor: pointer;
-  text-decoration: none;
-}
-.main-content .bottom h3 {
-  font-size: calc(0.75em + 0.75vw);
-  line-height: 3.5rem;
-}
+
 .container footer {
   display: flex;
   justify-content: center;
@@ -297,4 +234,83 @@ h2 {
 }
 footer p {
   font-size: calc(0.4em + 0.4vw);
+}
+@media (max-width: 500px) {
+  .container header {
+    height: 15%;
+  }
+  .container header nav {
+    display: block;
+  }
+  .container header nav .post-here {
+    justify-content: center;
+    font-size: calc(1.1em + 1.1vw);
+    margin-top: 1%;
+  }
+  .container header nav .nav-links {
+    font-size: calc(1.4em + 1.4vw);
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 3%;
+  }
+  .main-content {
+    padding: 0 1% 0 1%;
+  }
+  h1 {
+    margin: 5% 0 5% 0;
+    font-size: calc(1.3em + 1.3vw);
+  }
+  .our-team {
+    flex-direction: column;
+  }
+  .our-team .person {
+    width: 70%;
+    margin-bottom: 3%;
+  }
+  .our-team .person .name {
+    font-size: calc(1.2em + 1.2vw);
+  }
+  .our-team .person .role {
+    font-size: calc(0.9em + 0.9vw);
+    color: #4d5966;
+  }
+  footer p {
+    margin-top: 3%;
+    font-size: calc(0.6em + 0.6vw);
+  }
+}
+@media (min-width: 501px) and (max-width: 800px) {
+  .container header {
+    height: 10%;
+  }
+  .container header nav .post-here {
+    font-size: calc(0.8em + 0.8vw);
+  }
+  .container header nav .post-here img {
+    width: 12.5%;
+  }
+  .container header nav .nav-links {
+    font-size: calc(0.9em + 0.9vw);
+  }
+  h1 {
+    margin: 5.5% 0 4.5% 0;
+  }
+  .our-team .person {
+    width: 45%;
+    justify-content: space-evenly;
+  }
+}
+@media (min-width: 801px) and (max-width: 1024px) {
+  .container header {
+    height: 10%;
+  }
+  .container header nav .post-here {
+    font-size: calc(0.7em + 0.7vw);
+  }
+  .container header nav .nav-links {
+    font-size: calc(0.8em + 0.8vw);
+  }
+  h1 {
+    margin: 4.5% 0 3.5% 0;
+  }
 }

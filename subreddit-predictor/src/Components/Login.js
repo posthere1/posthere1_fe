@@ -2,8 +2,43 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import { connect } from "react-redux";
 import { login, fetchPrev } from "../actions/";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import styled from "styled-components";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
+
+const Container = styled.div`
+  width: 40%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10% 0 0 30%;
+`;
+
+const ErrorMessage = styled.p`
+  font-size: 0.8rem;
+  color: red;
+  text-align: center;
+  margin-left: 27%;
+`;
+
+const Info = styled.h2`
+  color: #0079d3;
+  font-weight: bold;
+`;
 
 const Login = (props) => {
+  const classes = useStyles();
+
   const [loginState, setLoginState] = useState({
     username: "",
     password: "",
@@ -62,32 +97,36 @@ const Login = (props) => {
   }, [loginState]);
 
   return (
-    <div>
-      <h1>Log In Page</h1>
-      <form>
+    <Container>
+      <Info>Sign In </Info>
+      <form className={classes.root}>
         <label htmlFor="username">
           Username:
-          <input
+          <TextField
             id="username"
+            variant="standard"
             type="text"
             name="username"
             value={loginState.username}
-            placeholder="Enter your Username"
+            placeholder="Create your Username"
             onChange={loginInfo}
           />
         </label>
         <label htmlFor="password">
           Password:
-          <input
+          <TextField
             id="password"
+            variant="standard"
             type="password"
             name="password"
             value={loginState.password}
-            placeholder="Enter your password"
+            placeholder="Create your password"
             onChange={loginInfo}
           />
         </label>
-        <button
+        <Button
+          variant="contained"
+          color="primary"
           disabled={disableButton}
           onClick={async (e) => {
             e.preventDefault();
@@ -97,16 +136,16 @@ const Login = (props) => {
           type="submit"
         >
           Sign In
-        </button>
+        </Button>
         {errors.username.length > 0 ? (
-          <p className="validateInfo">{errors.username}</p>
+          <ErrorMessage>{errors.username}</ErrorMessage>
         ) : null}
         {errors.password.length > 0 ? (
-          <p className="validateInfo">{errors.password}</p>
+          <ErrorMessage>{errors.password}</ErrorMessage>
         ) : null}
-        {props.error && <p>There was an error.</p>}
+        {props.error && <ErrorMessage>There was an error.</ErrorMessage>}
       </form>
-    </div>
+    </Container>
   );
 };
 const mapStateToProps = (state) => {
