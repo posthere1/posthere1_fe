@@ -168,22 +168,30 @@ const Dashboard = (props) => {
             </Typography>
             {props.prevPost.map((i) => {
               return (
-                <Card>
-                  <Typography color="textPrimary">
-                    <b>{i.title}</b>
-                  </Typography>
-                  <p>{i.text}</p>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      clearInputs();
-                      props.deletePost(i.id);
-                    }}
-                  >
-                    X
-                  </button>
-                  <button>Update</button>
-                </Card>
+                <>
+                  <Card>
+                    <Typography color="textPrimary">
+                      <b>{i.title}</b>
+                    </Typography>
+                    <p>{i.text}</p>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        clearInputs();
+                        props.deletePost(i.id);
+                      }}
+                    >
+                      X
+                    </Button>
+                    <Button variant="contained" color="yellow">
+                      Update
+                    </Button>
+                  </Card>
+                  <br />
+                  <br />
+                </>
               );
             })}
           </Card>
